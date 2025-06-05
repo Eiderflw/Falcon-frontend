@@ -1,0 +1,62 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #00092D;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+html {
+  margin: 0;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+#app,
+#app>*,
+.Panel,
+.Panel>*,
+.main,
+.main>*,
+.p-panel,
+.p-panel .p-panel-content,
+.p-toggleable-content {
+  height: auto !important;
+}
+
+p {
+  color: white;
+}
+
+.top-creadores>.top-seleccionado>div>.lista-creadores,
+.top-creadores>.top-agencias>div>.lista-creadores,
+.item_novedad>.descripcion,
+.reuniones>.contenedor>.detalle-progreso>.info-total>.detalle-reuniones {
+  scrollbar-width: thin;
+  scrollbar-color: #5e951c #555;
+}
+
+.animacion-estado {
+  animation: senalar 3s infinite ease;
+}
+
+@keyframes senalar {
+  0% {
+    transform: translateX(0px);
+  }
+
+  50% {
+    transform: translateX(30px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
