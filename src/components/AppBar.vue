@@ -57,8 +57,8 @@
 					<Button icon="pi pi-bars" text size="large" @click="visibleSidebar = true" />
 					<a href="/" style="text-decoration: none">
 						<span class="text-2xl font-bold logo">
-							<span>Samy</span>
-							flw
+							<span>Fal</span>
+							cón
 						</span>
 					</a>
 				</div>

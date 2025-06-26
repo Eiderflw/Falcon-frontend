@@ -225,7 +225,7 @@
             <div class="linea1"></div>
             <div class="form-container">
                 <div class="w-full flex justify-content-center">
-                    <Avatar image="/assets/img/logo-samyflw.png" size="xlarge" shape="circle" />
+                    <Avatar image="/assets/img/logo_app.png" size="xlarge" shape="circle" />
                 </div>
                 <p class="title m-0"><span class="verde">SAMY</span>FLW</p>
                 <div class="form">

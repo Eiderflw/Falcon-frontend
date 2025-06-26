@@ -4,11 +4,49 @@
 		<div class="inicio">
 			<div class="fondo">
 				<div class="destacado" id="destacado">
-					<video src="/assets/video/home/fondo_leones.webm" autoplay loop muted>
-						<source src="/assets/video/home/fondo_leones.webm" type="video/webm" />
+					<video src="/assets/video/home/fondo_top_categorias.mp4" autoplay loop muted>
+						<source src="/assets/video/home/fondo_top_categorias.mp4" type="video/mp4" />
 						Tu navegador no soporta esta funcionalidad video
 					</video>
-					<div class="diamantes w-max">
+					<div class="flex flex-wrap gap-6 top">
+						<div class="foto relative">
+							<img class="marco_foto" src="/assets/img/home/marco-foto.png" alt="Marco foto" />
+							<img src="/assets/img/home/aura.gif" alt="Aura foto" class="aura_foto" />
+							<img
+								:src="topDestacado.foto.length == 0 ? '/assets/img/avatar-default.jpg' : topDestacado.foto"
+								alt="Top 1"
+								class="top_destacado transition-all transition-duration-1000 fadein animation-duration-1000"
+							/>
+							<span class="descripcion_destacado absolute text-center bg-black-alpha-90 font-bold">{{ descripcion_destacado }}</span>
+						</div>
+						<div class="info flex flex-column">
+							<div class="personal relative">
+								<div class="nombre absolute text-center">{{ topDestacado.usuario }}</div>
+								<div class="columnas flex flex-wrap w-100 justify-content-evenly font-metal-mania">
+									<h2 class="m-0 p-0">DIAMANTES</h2>
+									<h2 class="m-0 p-0">CATEGORÍA</h2>
+								</div>
+							</div>
+							<div class="datos flex flex-wrap justify-content-around">
+								<div class="diamantes flex flex-column align-items-center flex-wrap">
+									<img src="/assets/img/home/diamante.gif" alt="Diamante" class="diamante" />
+									<p class="m-0 text-2xl text-center font-bold transition-all transition-duration-1000 fadein animation-duration-1000">
+										{{ topDestacado.diamantes_mes_actual.toLocaleString() }}
+									</p>
+								</div>
+								<div class="categoria flex flex-column align-items-center flex-wrap">
+									<img src="/assets/img/home/insignia.gif" alt="Insignia" class="insignia" />
+									<p
+										class="m-0 text-2xl text-center font-bold transition-all transition-duration-1000 fadein animation-duration-1000 uppercase"
+									>
+										{{ topDestacado.categoria }}
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- <div class="diamantes w-max">
 						<div class="title transition-all transition-duration-1000 fadein animation-duration-1000">
 							<div class="animacion" />
 						</div>
@@ -52,19 +90,20 @@
 						<div class="proplus transition-all transition-duration-1000 fadein" v-else-if="topDestacado.categoria == 'Pro+'">
 							<div class="animacion" />
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<TopsCarouselVideos />
-				<section id="unete" class="text-center flex flex-column align-items-center py-8">
-					<h1 class="text-6xl mb-0 font-play-pretend-home">¡VEN Y SÉ PARTE!</h1>
-					<p class="font-bold mt-0">Somos una agencia dedicada a crecer tu perfil y en ti mismo</p>
+				<section id="unete" class="unete text-center flex flex-wrap justify-content-center gap-4 align-items-center">
+					<div class="flex flex-column align-items-center gap-2">
+						<h1 class="text-6xl m-0 font-play-pretend-home uppercase">¡ANÍMATE!</h1>
+						<h3 class="font-bold m-0 uppercase">ATRÉVETE A SER PARTE DE ESTA FAMILIA</h3>
+					</div>
 					<a
 						href="https://api.whatsapp.com/send?phone=573176205370"
 						target="_blank"
 						class="link_whatsapp relative transition-all fadein animation-duration-1000 uppercase no-underline text-white-alpha-90"
 					>
-						<img src="/assets/img/btn_escribenos.png" class="img_btn_escribenos" alt="Botón WhatsApp" />
-						<span class="absolute text-4xl font-play-pretend-home">ESCRÍBENOS!</span>
+						<img src="/assets/img/btn_whatsapp.png" class="img_btn_escribenos" alt="Botón WhatsApp" />
 					</a>
 				</section>
 				<CarouselNovedades />
@@ -176,10 +215,10 @@ export default {
 		topDestacadoTitle: "Diamantes",
 		idIntervalDestacado: null,
 		topDestacado: {
-			categoria: null,
-			diamantes_mes_actual: 0,
+			categoria: "VETERAn",
+			diamantes_mes_actual: 123404512,
 			foto: "",
-			usuario: "",
+			usuario: "Sin usaurio",
 		},
 		descripcion_destacado: "Top 1",
 		top3: [
@@ -302,13 +341,15 @@ html {
 	margin: 0;
 	padding: 0;
 	min-height: 100vh;
-	background: #000000;
+	background: #5cadbf;
+	background: linear-gradient(85deg, rgba(92, 173, 191, 0.85) 30%, rgba(47, 70, 89, 0.78) 70%);
 	box-sizing: border-box;
 	scroll-behavior: smooth !important;
 }
 
 .home {
-	background: #000000;
+	background: #5cadbf;
+	background: linear-gradient(85deg, rgba(92, 173, 191, 0.85) 30%, rgba(47, 70, 89, 0.78) 70%);
 }
 
 .destacado {
@@ -322,41 +363,14 @@ html {
 	object-fit: contain;
 	object-position: top;
 }
-.destacado > .diamantes > .title {
-	background-image: url("/assets/img/home/diamantes-title.png");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 100% 100%;
-	object-fit: contain;
-	height: 54px;
-	width: 340px;
-	margin: 0;
-}
-.destacado > .diamantes > .title > .animacion,
-.destacado > .categoria > div > .animacion {
-	height: 100%;
-	width: 100%;
-	background: url("/assets/img/home/electricidad.gif");
-	background-size: 100% 100%;
-	object-fit: contain;
-	mix-blend-mode: lighten;
-	background-repeat: no-repeat;
-}
-.destacado > .diamantes {
-	position: absolute;
-	left: calc(50% - 507px);
-	top: 222px;
-	height: auto;
-}
-.destacado > .categoria {
-	position: absolute;
-	text-align: center;
-	left: calc(50% + 153px);
-	top: 208px;
-	height: auto;
-}
 .descripcion_destacado {
 	text-shadow: 2px 2px 9px white;
+	width: 97px;
+	height: 44px;
+	left: calc(50% - 49px);
+	bottom: 65px;
+	z-index: 2;
+	padding: 6px 7px 4px 7px;
 }
 .destacado > .categoria > div {
 	pointer-events: none;
@@ -367,18 +381,6 @@ html {
 	height: 54px;
 	width: 340px;
 	margin: 0;
-}
-.destacado > .categoria > .rookie {
-	background-image: url("/assets/img/grupos/rookie.png");
-}
-.destacado > .categoria > .veteran {
-	background-image: url("/assets/img/grupos/veterano.png");
-}
-.destacado > .categoria > .pro {
-	background-image: url("/assets/img/grupos/pro.png");
-}
-.destacado > .categoria > .proplus {
-	background-image: url("/assets/img/grupos/pro+.png");
 }
 .destacado > video {
 	min-height: 540px;
@@ -393,51 +395,99 @@ html {
 	align-items: center;
 	top: 137px;
 }
-.destacado > .top > img.fondo {
-	width: 80%;
-	max-width: 1041px;
+.destacado > .top > .foto > img.marco_foto {
 	object-fit: contain;
 	background-size: contain;
 	background-repeat: no-repeat;
+	width: 400px;
+	height: 400px;
+	position: relative;
+	z-index: 3;
+	user-select: none;
 }
-.destacado > .top > img.top_destacado {
+.destacado > .top > .foto > img.top_destacado {
 	position: absolute;
 	border-radius: 50%;
-	top: 95px;
-	left: calc(50% - 92px);
-	width: 181px;
-	height: 181px;
+	top: calc(50% - 77px);
+	left: calc(50% - 67px);
+	width: 140px;
+	height: 140px;
+	z-index: 1;
 }
-.destacado > .top > .username {
+.destacado > .top > .foto > img.aura_foto {
 	position: absolute;
-	text-align: center;
-	width: 208px;
-	font-weight: bold;
-	font-size: 24px;
-	max-width: 208px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	bottom: -78px;
-	left: calc(50% - 94px);
+	border-radius: 50%;
+	top: calc(50% - 164px);
+	left: calc(50% - 214px);
+	width: 432px;
+	height: 320px;
+	z-index: 2;
+	user-select: none;
 }
-.destacado > .categoria > h2 {
-	line-height: 0.85;
+.destacado > .top > .info {
+	min-width: 400px;
+	height: min-content;
+	padding: 6px 10px;
 }
-.link_whatsapp {
-	width: 325px;
-	height: 78px;
-	display: flex;
-	flex-direction: column;
+.destacado > .top > .info > .personal {
+	background: radial-gradient(98.05% 261.61% at 1.95% 3.59%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+	padding: 14px 4px 2px 4px;
+	border-width: 3px;
+	border-style: solid;
+	border-radius: 10px;
+	/* Para bordes redondeados con border-image, usa un pseudo-elemento para simular el borde */
+	position: relative;
+	z-index: 1;
+	border: none;
 }
-.link_whatsapp > .img_btn_escribenos {
-	height: 100%;
-	background-size: 100% 100%;
+
+.destacado > .top > .info > .personal::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 10px;
+	padding: 0;
+	z-index: -1;
+	border: 1.9px solid transparent;
+	background: linear-gradient(90deg, #1e6572b5 0%, #5cadbf 100%) border-box;
+	-webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	pointer-events: none;
 }
-.link_whatsapp > span {
-	padding: 15px 11px 13px 71px;
-	text-align: start;
-	width: 100%;
+.destacado > .top > .info > .personal > .nombre {
+	background-color: #1e6572;
+	color: white;
+	width: 150px;
+	left: calc(50% - 75px);
+	top: -22px;
+	padding: 10px 2px;
+	height: 40px;
+	border-radius: 10px;
+	margin: 0 auto;
+	box-shadow: 0px 3px 12px 5px rgba(30, 101, 114, 0.6);
+	-webkit-box-shadow: 0px 3px 12px 5px rgba(30, 101, 114, 0.6);
+	-moz-box-shadow: 0px 3px 12px 5px rgba(30, 101, 114, 0.6);
+}
+
+.destacado>.top>.info>.personal>.columnas, .destacado>.top>.info>.datos{
+	text-shadow: 0px 2px 3px rgba(92, 173, 191, 1);
+}
+.destacado > .top > .info > .datos > .categoria > img.insignia {
+	width: 65px;
+	height: 65px;
+}
+.destacado > .top > .info > .datos > .diamantes {
+	gap: 15px;
+}
+
+.home .unete {
+	padding-top: 13rem;
+	height:500px;
+}
+.img_btn_escribenos {
+	width: 130px;
+	height: 130px;
 }
 
 .clasificados_destacados {
@@ -564,9 +614,6 @@ html {
 	.destacado > .top > .username {
 		bottom: -68px !important;
 	}
-	.descripcion_destacado {
-		top: 11px !important;
-	}
 }
 
 @media (max-width: 1213px) {
@@ -626,9 +673,6 @@ html {
 	.destacado > .top > .username {
 		bottom: -70px !important;
 	}
-	.descripcion_destacado {
-		top: 11px !important;
-	}
 }
 @media (max-width: 1093px) {
 	.destacado > .top > img.top_destacado {
@@ -677,9 +721,6 @@ html {
 	.destacado > .top > .username {
 		bottom: -53px !important;
 	}
-	.descripcion_destacado {
-		top: 16px !important;
-	}
 }
 @media (max-width: 1000px) {
 	.clasificados_destacados > .borde_tabla {
@@ -712,9 +753,6 @@ html {
 	.destacado > .top > .username {
 		bottom: -47px !important;
 	}
-	.descripcion_destacado {
-		top: 19px !important;
-	}
 }
 @media (max-width: 970px) {
 	.destacado > .diamantes > .title,
@@ -741,9 +779,6 @@ html {
 	.destacado > .diamantes,
 	.destacado > .categoria {
 		top: 250px !important;
-	}
-	.descripcion_destacado {
-		top: 24px !important;
 	}
 }
 @media (max-width: 929px) {
@@ -784,9 +819,6 @@ html {
 		height: 153px !important;
 		left: calc(50% - 77px) !important;
 		top: 102px !important;
-	}
-	.descripcion_destacado {
-		top: 18px !important;
 	}
 }
 @media (max-width: 878px) {

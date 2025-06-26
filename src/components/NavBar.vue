@@ -22,24 +22,22 @@
 		</Sidebar>
 		<header class="w-full m-0">
 			<div class="opciones flex justify-content-between align-items-center w-full">
-				<a href="" class="logo">
-					<span>Samy</span>
-					flw
-				</a>
+				<div class="logo">
+					<router-link to="/"><img src="/assets/img/logo_app.png" alt="Logo" class="w-full h-full select-none" /></router-link>
+				</div>
 				<nav>
 					<router-link to="/duckracer">Juegos</router-link>
-					<a href="#/terminos">Terminos</a>
+					<router-link to="/terminos">Términos</router-link>
 					<router-link to="/actualizaciones-reglas">Control reglas</router-link>
 					<router-link to="/evento">Eventos</router-link>
-					<!-- <router-link to="/EventoEspecialView">Eventos Categoría</router-link> -->
-					<router-link to="/login">Login</router-link>
+
+					<router-link to="/login">
+						<button class="btn_login cursor-pointer font-bold">INICIA SESIÓN</button>
+					</router-link>
 					<Button icon="pi pi-bars" class="botonMenu" text size="large" @click="visibleSidebar = true" />
 				</nav>
 			</div>
 		</header>
-		<div class="container-linea flex sm:justify-content-start md:justify-content-end w-full">
-			<div class="linea xs:w-full sm:w-full md:w-6"></div>
-		</div>
 	</div>
 </template>
 <script>
@@ -82,13 +80,13 @@ export default {
 			},
 			{
 				label: "Control Reglas",
-                items: [
-                    {
-                        label: "Control Reglas",
-                        icon: "pi pi-sliders-h",
-                        route: "/actualizaciones-reglas",
-                    },
-                ],
+				items: [
+					{
+						label: "Control Reglas",
+						icon: "pi pi-sliders-h",
+						route: "/actualizaciones-reglas",
+					},
+				],
 			},
 			{
 				separator: true,
@@ -111,63 +109,70 @@ export default {
 .navbar {
 	position: fixed !important;
 	display: flex;
-	top: 0;
-	width: 100%;
-	max-width: 100vw;
+	top: 20px;
+	width: calc(100% - 40px);
+	max-width: calc(100vw - 40px);
+	left: 20px;
+	right: calc(100% - 20px);
+	border-radius: 12px;
 	flex-direction: column;
-	z-index: 3;
-}
+	z-index: 10;
+	background: #757171;
+	background: linear-gradient(80deg, rgba(117, 113, 113, 0.85) 0%, rgba(7, 8, 7, 0.78) 50%);
 
-header {
-	height: 67px;
-	padding: 10px 20px 10px 10px;
-	font-family: "planet-gamers" !important;
-	background-image: url("/assets/img/header/header-bg.png") !important;
-	background-repeat: no-repeat !important;
-	background-size: cover !important;
+	border: none;
+	border-image: radial-gradient(100% 266.82% at 0% 2.79%, #1e6572 0%, #5cadbf 100%),
+		radial-gradient(98.54% 262.92% at 1.46% 0%, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+		radial-gradient(98.54% 262.92% at 0% 0%, #151515 0%, rgba(21, 21, 21, 0) 100%);
+	backdrop-filter: blur(42px);
+	padding: 2px 12px;
 }
-
-.container-linea {
-	position: relative;
-	top: -4px;
-}
-
-.linea {
-	background-image: url("/assets/img/header/header-line.png") !important;
-	background-repeat: no-repeat !important;
-	background-size: cover !important;
-	z-index: 12;
-	height: 4px;
+.navbar::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 10px;
+	background: linear-gradient(90deg, #1e6572b5 0%, #5cadbf 100%) border-box;
+	z-index: -1;
+	border: 1.9px solid transparent;
+	-webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	pointer-events: none;
 }
 
 header .logo {
-	color: #fff;
-	font-size: 2em;
-	font-weight: 700;
-	text-decoration: none;
-}
-
-header .logo span {
-	color: #84dc16;
+	width: 65px;
+	height: 60px;
 }
 
 header nav {
 	display: flex;
 	gap: 15px;
+	font-weight: bold;
+	color: #ffffff;
+	line-height: 100%;
+	text-transform: uppercase;
+	align-items: center;
+}
+header nav a {
+	font-family: "Monomaniac One";
+	vertical-align: middle;
 }
 
+.btn_login {
+	background-color: #5cadbf;
+	color: #1e65727a;
+	border-image: linear-gradient(0deg, #5cadbf 1%, white 90%);
+	border-image-slice: 1;
+	border-width: 2px;
+	padding: 4px 16px;
+	box-shadow: 6px -5px 6px 0px rgba(92,173,191,0.59);
+-webkit-box-shadow: 6px -5px 6px 0px rgba(92,173,191,0.59);
+-moz-box-shadow: 6px -5px 6px 0px rgba(92,173,191,0.59);
+}
 .botonMenu {
 	display: none;
-}
-@media (max-width: 960px) {
-	header .logo {
-		font-size: 1.5em;
-	}
-}
-@media (max-width: 865px) {
-	header .logo {
-		font-size: 1.2em;
-	}
 }
 @media (max-width: 739px) {
 	header nav a {

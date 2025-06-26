@@ -60,3 +60,18 @@ p {
     transform: translateX(0px);
   }
 }
+
+img.diamante, img.insignia{
+  height: 50px;
+  width: 55px;
+  object-fit: contain;
+}
+
+@font-face {
+	font-family: "Metal-mania-regular";
+	src: url("/assets/fonts/Metal-Mania-Regular/MetalMania-Regular.ttf");
+}
+
+.font-metal-mania {
+  font-family: "Metal-mania-regular" !important;
+}

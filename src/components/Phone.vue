@@ -12,7 +12,7 @@
 			Tu navegador no soporta esta funcionalidad video
 		</video>
 		<div ref="info_nosotros" class="flex flex-wrap justify-content-evenly row-gap-4 absolute top-0 w-full mt-8 pt-5">
-			<Image src="/assets/img/logo_samyflw.png" alt="Logo SAMYFLW" :imageStyle="{ 'border-radius': '12px' }" width="220" height="280" />
+			<Image src="/assets/img/logo_app.png" alt="Logo SAMYFLW" :imageStyle="{ 'border-radius': '12px' }" width="220" height="280" />
 			<div class="text">
 				<div class="flex flex-column w-full uppercase text-white-alpha-90 line-height-1 titulo_nosotros">
 					<h1 class="font-play-pretend-home text-6xl m-0">Hola somos</h1>

@@ -1,5 +1,9 @@
 <template>
-	<section class="top-creadores flex flex-wrap row-gap-2 justify-content-center lg:justify-content-between py-4">
+	<section class="top-creadores flex flex-wrap row-gap-2 justify-content-center lg:justify-content-between relative">
+		<video class="fondo w-full absolute" src="/assets/video/home/fondo_top_aliado_select.mp4" autoplay loop muted>
+			<source src="/assets/video/home/fondo_top_aliado_select.mp4" type="video/mp4" />
+			Tu navegador no soporta esta funcionalidad video
+		</video>
 		<div class="top-seleccionado">
 			<div class="flex flex-column gap-1">
 				<div class="flex flex-column gap-1 w-full">
@@ -335,13 +339,13 @@ export default {
 	cursor: pointer;
 }
 .top-creadores {
-	aspect-ratio: 3/1;
-	background-image: url("/assets/img/home/top/fondo_top_carousel.png");
+	/* background-image: url("/assets/img/home/top/fondo_top_carousel.png"); */
 	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 100% 100%;
-	position: relative;
-	top: -7px;
+	
+}
+.top-creadores > .fondo {
+	z-index: 0;
+	object-fit: contain;
 }
 .top-creadores > .top-seleccionado,
 .top-creadores > .top-agencias {
@@ -354,6 +358,7 @@ export default {
 	min-width: 400px;
 	height: 840px;
 	max-height: 1000px;
+	z-index: 1;
 }
 .top-creadores > .top-seleccionado > div > .lista-creadores,
 .top-creadores > .top-agencias > div > .lista-creadores {
