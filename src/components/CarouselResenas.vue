@@ -1,40 +1,32 @@
 <template>
 	<section class="resenas flex flex-column relative pb-5">
-		<h1 class="font-play-pretend-home text-6xl my-3 text-center uppercase word-break w-full">RESEÑAS</h1>
+		<video src="/assets/video/home/fondo_resenas.mp4" class="absolute w-full" muted autoplay loop>
+			<source src="/assets/video/home/fondo_resenas.mp4" type="video/mp4" />
+		</video>
+		<h1 class="font-jockey-one text-6xl my-3 text-center uppercase word-break w-full">RESEÑAS</h1>
 		<Carousel
 			:value="resenas"
 			:circular="true"
-			:showNavigators="true"
-			:showIndicators="true"
+			:showNavigators="false"
+			:showIndicators="false"
 			:autoplayInterval="2000"
 			class="w-full resenas_usuarios carousel-items-centrados"
 			:numVisible="numItemsVisible"
 			:responsiveOptions="responsiveOptions"
 		>
 			<template #item="props">
-				<div class="item_resena_usuario relative mt-8 mb-4">
-					<div class="foto_container absolute">
-						<img :src="props.data.foto" alt="Foto Usuario" class="border-circle" />
-					</div>
-					<h3 class="m-2 font-play-pretend-home text-center">{{ props.data.nombre }}</h3>
+				<div class="item_resena_usuario relative flex flex-column mt-8 mb-4">
 					<ScrollPanel :unstyled="true" class="descripcion" style="width: 100%; height: 150px; overflow: auto !important">
-						<p class="m-0 text-white-alpha-70 text-center">{{ props.data.descripcion }}</p>
+						<p class="m-0 text-black-alpha-90 text-start font-bold font-inter text-lg uppercase">{{ props.data.descripcion }}</p>
 					</ScrollPanel>
-					<div class="estrellas w-full flex gap-3 pt-2 mt-auto justify-content-center">
-						<img
-							v-for="estrella in props.data.estrellas"
-							:key="estrella"
-							src="/assets/img/home/estrella_llena.png"
-							alt="Estrella calificada"
-							class="estrella"
-						/>
-						<img
-							v-for="estrella in 5 - props.data.estrellas"
-							:key="estrella"
-							src="/assets/img/home/estrella_vacia.png"
-							alt="Estrella sin calificar"
-							class="estrella"
-						/>
+					<div class="flex w-full gap-1">
+						<div class="foto_container">
+							<img :src="props.data.foto" alt="Foto Usuario" class="border-circle" />
+						</div>
+						<div class="div flex flex-column gap-1">
+							<h3 class="font-inter text-start uppercase m-0 text-black-alpha-90">{{ props.data.nombre }}</h3>
+							<span class="font-inter font-bold text-black-alpha-90">{{ props.data.fecha }}</span>
+						</div>
 					</div>
 				</div>
 			</template>
@@ -61,25 +53,25 @@ export default {
 				nombre: "Juan",
 				foto: "/assets/img/perfil1.jpg",
 				descripcion: "Lorem ipsum dolor",
-				estrellas: 5,
+				fecha: "2025-02-12",
 			},
 			{
 				nombre: "Luis",
 				foto: "/assets/img/perfil2.jpg",
 				descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, ipsum id malesuada sagittis, mauris velit",
-				estrellas: 4,
+				fecha: "2025-04-22",
 			},
 			{
 				nombre: "Pedro",
 				foto: "/assets/img/perfil3.jpg",
 				descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, ipsum id malesuada sagittis, mauris velit",
-				estrellas: 3,
+				fecha: "2025-03-15",
 			},
 			{
 				nombre: "Maria",
 				foto: "/assets/img/perfil1.jpg",
 				descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, ipsum id malesuada sagittis, mauris velit",
-				estrellas: 2,
+				fecha: "2025-02-28",
 			},
 		],
 		responsiveOptions: [
@@ -103,17 +95,18 @@ export default {
 };
 </script>
 <style scoped>
+.resenas > video,
+.resenas {
+	object-fit: fill;
+	height: 600px;
+}
 img.estrella {
 	width: 34px;
 	height: 34px;
 }
 .foto_container {
-	left: calc(50% - 50px);
-	top: -41px;
-	width: 100px;
-	height: 100px;
-	border: 3px solid #25e007;
-	padding: 4px;
+	width: 60px;
+	height: 60px;
 	border-radius: 50%;
 }
 .foto_container > img {
@@ -121,12 +114,14 @@ img.estrella {
 	height: 100%;
 }
 .item_resena_usuario {
-	max-width: 350px;
+	max-width: 360px;
 	min-width: 350px;
-	border: 3px solid #ffffff;
 	border-radius: 12px;
-	padding: 0 6px 28px 6px;
+	padding: 15px 6px 28px 6px;
 	z-index: 1;
+	background: #ffffff5e;
+	box-shadow: 7px 7px 9.3px 0px #00000040;
+	backdrop-filter: blur(4px);
 }
 .item_resena_usuario > h3 {
 	margin-top: 70px !important;
@@ -138,10 +133,26 @@ img.estrella {
 		min-width: 300px !important;
 	}
 }
-@media (max-width: 300px) {
+@media (max-width: 400px) {
+	.item_resena_usuario {
+		min-width: 220px !important;
+		max-width: 220px !important;
+	}
+}
+@media (max-width: 335px) {
+	.item_resena_usuario {
+		max-width: 210px !important;
+		min-width: 210px !important;
+	}
+}
+@media (max-width: 310px) {
 	img.estrella {
 		width: 24px !important;
 		height: 24px !important;
+	}
+	.item_resena_usuario {
+		max-width: 190px !important;
+		min-width: 190px !important;
 	}
 }
 @media (max-width: 235px) {
@@ -166,5 +177,8 @@ img.estrella {
 }
 .resenas > .resenas_usuarios > .p-carousel-content > ul.p-carousel-indicators > li.p-carousel-indicator.p-highlight > button {
 	background-color: #25e007;
+}
+.resenas_usuarios .p-carousel-items-container {
+	gap: 10px !important;
 }
 </style>

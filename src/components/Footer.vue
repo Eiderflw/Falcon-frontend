@@ -1,25 +1,33 @@
 <template>
 	<footer class="footer w-full flex flex-column align-items-center py-4 text-center word-break">
-		<h1 class="text-4xl font-play-pretend-home mb-1">
-			Métodos de pago en
-			<span class="color-verde">Samyflw</span>
-			:
-		</h1>
-		<div class="flex flex-wrap gap-2 justify-content-center">
-			<img src="../assets/img/binance.png" class="border-circle" width="50px" height="50px" alt="Logo Binance" />
-			<img src="../assets/img/openpay.png" class="border-circle" width="50px" height="50px" alt="Logo OpenPay" />
+		<h1 class="text-5xl font-inter mb-1 font-bold uppercase text-xl">Métodos de pago</h1>
+		<div class="flex flex-wrap gap-3 justify-content-center align-items-start">
+			<img v-for="(marca, index) in marcas_usadas" :src="marca" :key="index" class="marca" alt="Logo marca" />
 		</div>
-
-		<strong>
-			<span class="color-verde">Samyflw</span>
-			Copyright © 2024 - All rights reserved
-		</strong>
 	</footer>
 </template>
+<script>
+export default {
+	data: () => ({
+		marcas_usadas: ["/assets/img/footer/logo_binance.png", "/assets/img/footer/logo_openpay.png"],
+	}),
+};
+</script>
 <style scoped>
 .footer {
-	background-image: url("/assets/img/home/fondo_novedades.png");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
+	background: #eae9e6;
+}
+.footer > h1 {
+	background: linear-gradient(90deg, #5cadbf 0%, rgba(30, 101, 114, 0.71) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	color: transparent;
+}
+.footer .marca{
+	width:180px;
+	object-fit: contain;
 }
 </style>

@@ -27,7 +27,7 @@
 									<h2 class="m-0 p-0">CATEGORÍA</h2>
 								</div>
 							</div>
-							<div class="datos flex flex-wrap justify-content-around">
+							<div class="datos flex flex-wrap justify-content-evenly xl:justify-content-around">
 								<div class="diamantes flex flex-column align-items-center flex-wrap">
 									<img src="/assets/img/home/diamante.gif" alt="Diamante" class="diamante" />
 									<p class="m-0 text-2xl text-center font-bold transition-all transition-duration-1000 fadein animation-duration-1000">
@@ -45,58 +45,12 @@
 							</div>
 						</div>
 					</div>
-
-					<!-- <div class="diamantes w-max">
-						<div class="title transition-all transition-duration-1000 fadein animation-duration-1000">
-							<div class="animacion" />
-						</div>
-						<div class="flex w-full flex-wrap gap-1 justify-content-center align-items-center">
-							<img
-								src="/assets/img/home/diamante.gif"
-								alt="Diamantes"
-								class="transition-all transition-duration-1000 fadein animation-duration-1000"
-								style="width: 40px; object-fit: fill"
-							/>
-							<p class="m-0 text-2xl text-center font-bold transition-all transition-duration-1000 fadein animation-duration-1000">
-								{{ topDestacado.diamantes_mes_actual.toLocaleString() }}
-							</p>
-						</div>
-					</div>
-					<div class="top">
-						<img class="fondo" src="/assets/img/home/marco-foto.png" alt="Marco foto" />
-						<strong class="absolute top-0 pt-2 text-lg descripcion_destacado">{{ descripcion_destacado }}</strong>
-						<img
-							:src="topDestacado.foto"
-							alt="Top 1"
-							class="top_destacado transition-all transition-duration-1000 fadein animation-duration-1000"
-						/>
-						<p class="m-0 username transition-all transition-duration-1000 fadein animation-duration-1000">{{ topDestacado.usuario }}</p>
-					</div>
-					<div class="categoria w-max flex flex-column flex-wrap gap-1 justify-content-center align-items-center">
-						<h2
-							class="m-0 white-space-nowrap overflow-hidden text-overflow-ellipsis w-full text-center transition-all transition-duration-1000 fadein animation-duration-1000"
-						>
-							CATEGORIA
-						</h2>
-						<div class="rookie transition-all transition-duration-1000 fadein" v-if="topDestacado.categoria == 'Rookie'">
-							<div class="animacion" />
-						</div>
-						<div class="veteran transition-all transition-duration-1000 fadein" v-else-if="topDestacado.categoria == 'Veteran'">
-							<div class="animacion" />
-						</div>
-						<div class="pro transition-all transition-duration-1000 fadein" v-else-if="topDestacado.categoria == 'Pro'">
-							<div class="animacion" />
-						</div>
-						<div class="proplus transition-all transition-duration-1000 fadein" v-else-if="topDestacado.categoria == 'Pro+'">
-							<div class="animacion" />
-						</div>
-					</div> -->
 				</div>
 				<TopsCarouselVideos />
 				<section id="unete" class="unete text-center flex flex-wrap justify-content-center gap-4 align-items-center">
 					<div class="flex flex-column align-items-center gap-2">
-						<h1 class="text-6xl m-0 font-play-pretend-home uppercase">¡ANÍMATE!</h1>
-						<h3 class="font-bold m-0 uppercase">ATRÉVETE A SER PARTE DE ESTA FAMILIA</h3>
+						<h1 class="text-6xl m-0 font-mouse-memoirs uppercase">¡ANÍMATE!</h1>
+						<h3 class="font-bold m-0 uppercase font-monomaniac-one">ATRÉVETE A SER PARTE DE ESTA FAMILIA</h3>
 					</div>
 					<a
 						href="https://api.whatsapp.com/send?phone=573176205370"
@@ -108,79 +62,36 @@
 				</section>
 				<CarouselNovedades />
 				<Phone />
-				<section id="clasificados" class="clasificados_destacados p-7 flex flex-column align-items-center">
-					<Panel :unstyled="true" class="borde_tabla">
-						<template #header>
-							<div class="containerC" style="margin-bottom: 20px" v-if="clasificados.length > 2">
-								<Clasificacion :nombre="clasificados[1].usuario" top="2" tipo="Platino" :foto="clasificados[1].foto" />
-								<Clasificacion top="1" tipo="Oro" :nombre="clasificados[0].usuario" :foto="clasificados[0].foto" />
-								<Clasificacion :nombre="clasificados[2].usuario" top="3" tipo="Cobre" :foto="clasificados[2].foto" />
-							</div>
-						</template>
-						<DataTable
-							:unstyled="true"
-							scrollable
-							:value="clasificados"
-							class="mt-7 tabla_destacados_home color-blue font-bold"
-							:tableStyle="{ 'min-width': '100%', 'text-align': 'start' }"
-						>
-							<Column header="#" style="min-width: 20px" frozen headerClass="text-center color-blue">
-								<template #body="props">
-									<div class="w-full flex justify-content-center">
-										<Clasificacion
-											v-if="props.index == 1"
-											:nombre="clasificados[1].usuario"
-											top="2"
-											tipo="PlatinoPequeno"
-											:foto="clasificados[1].foto"
-											:mostrarNombre="false"
-											class="clasificacion_fila_tabla"
-										/>
-										<Clasificacion
-											v-else-if="props.index == 0"
-											top="1"
-											tipo="OroPequeno"
-											:nombre="clasificados[0].usuario"
-											:foto="clasificados[0].foto"
-											:mostrarNombre="false"
-											class="clasificacion_fila_tabla"
-										/>
-										<Clasificacion
-											v-else-if="props.index == 2"
-											:nombre="clasificados[2].usuario"
-											top="3"
-											tipo="CobrePequeno"
-											:foto="clasificados[2].foto"
-											:mostrarNombre="false"
-											class="clasificacion_fila_tabla"
-										/>
-										<strong v-else>{{ props.index + 1 }}</strong>
-									</div>
-								</template>
-							</Column>
-							<Column field="usuario" header="Creador" headerClass="text-left" />
-							<Column header="Insignias Obtenidas ⭐" headerClass="text-left">
-								<template #body="slotProps">
-									<div class="misInsignias flex w-full gap-1 flex-nowrap justify-content-start">
-										<Avatar
-											v-for="(insignia, index) in slotProps.data.insignias"
-											:key="index"
-											size="large"
-											shape="circle"
-											v-tooltip="insignia.descripcion"
-										>
-											<img :src="insignia.secure_url" :alt="`Insignia ${index + 1}`" />
-										</Avatar>
-									</div>
-								</template>
-							</Column>
-							<Column field="grupo" header="Grupo" headerClass="text-left">
-								<template #body="props">
-									<img :src="`/assets/img/grupos/${props.data.grupo}.png`" :alt="`Grupo ${props.data.grupo}`" class="img-grupo" />
-								</template>
-							</Column>
-						</DataTable>
-					</Panel>
+				<section id="clasificados" class="clasificados_destacados w-full relative">
+					<video src="/assets/video/home/fondo_top3.mp4" class="absolute w-full" autoplay muted loop>
+						<source src="/assets/video/home/fondo_top3.mp4" type="video/mp4" />
+					</video>
+					<div class="containerC py-5 align-items-start" v-if="clasificados.length > 2">
+						<Clasificacion
+							:nombre="clasificados[2].usuario"
+							:grupo="clasificados[2].grupo"
+							:insignias="clasificados[2].insignias"
+							top="3"
+							tipo="Cobre"
+							:foto="clasificados[2].foto"
+						/>
+						<Clasificacion
+							top="1"
+							tipo="Oro"
+							:nombre="clasificados[0].usuario"
+							:insignias="clasificados[0].insignias"
+							:grupo="clasificados[0].grupo"
+							:foto="clasificados[0].foto"
+						/>
+						<Clasificacion
+							:nombre="clasificados[1].usuario"
+							top="2"
+							:insignias="clasificados[1].insignias"
+							:grupo="clasificados[1].grupo"
+							tipo="Platino"
+							:foto="clasificados[1].foto"
+						/>
+					</div>
 				</section>
 				<CarouselResenas />
 			</div>
@@ -198,14 +109,20 @@ export default {
 			{
 				usuario: "x",
 				foto: "",
+				grupo: "",
+				insignias: [],
 			},
 			{
 				usuario: "x",
 				foto: "",
+				grupo: "",
+				insignias: [],
 			},
 			{
 				usuario: "x",
 				foto: "",
+				grupo: "",
+				insignias: [],
 			},
 		],
 		top5Diamantes: [],
@@ -216,9 +133,9 @@ export default {
 		idIntervalDestacado: null,
 		topDestacado: {
 			categoria: "VETERAn",
-			diamantes_mes_actual: 123404512,
+			diamantes_mes_actual: 0,
 			foto: "",
-			usuario: "Sin usaurio",
+			usuario: "Sin usuario",
 		},
 		descripcion_destacado: "Top 1",
 		top3: [
@@ -354,8 +271,7 @@ html {
 
 .destacado {
 	width: 100%;
-	height: max-content;
-	max-height: 650px;
+	height: 700px;
 }
 .destacado > * {
 	width: 100%;
@@ -384,9 +300,9 @@ html {
 }
 .destacado > video {
 	min-height: 540px;
-	height: auto;
+	height: 100%;
 	object-fit: cover;
-	max-height: 650px;
+	max-height: 700px;
 }
 .destacado > .top {
 	position: absolute;
@@ -470,7 +386,8 @@ html {
 	-moz-box-shadow: 0px 3px 12px 5px rgba(30, 101, 114, 0.6);
 }
 
-.destacado>.top>.info>.personal>.columnas, .destacado>.top>.info>.datos{
+.destacado > .top > .info > .personal > .columnas,
+.destacado > .top > .info > .datos {
 	text-shadow: 0px 2px 3px rgba(92, 173, 191, 1);
 }
 .destacado > .top > .info > .datos > .categoria > img.insignia {
@@ -482,28 +399,18 @@ html {
 }
 
 .home .unete {
-	padding-top: 13rem;
-	height:500px;
+	padding: 5rem 1rem;
 }
 .img_btn_escribenos {
 	width: 130px;
 	height: 130px;
 }
 
+.clasificados_destacados > video,
 .clasificados_destacados {
-	background-image: url("/assets/img/home/fondo_tabla_destacados.png");
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
+	object-fit: cover;
+	height: 900px;
 }
-.clasificados_destacados > .borde_tabla {
-	background-image: url("/assets/img/home/borde_tabla_destacados.png");
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	padding: 40px;
-	height: 1200px;
-	width: 1200px;
-}
-
 .container {
 	--bs-gutter-x: 1.5rem;
 	--bs-gutter-y: 0;
@@ -548,6 +455,25 @@ html {
 		width: 25%;
 	}
 }
+@media (max-width: 940px) {
+	.clasificados_destacados > .containerC {
+		flex-direction: column !important;
+		align-items: center !important;
+	}
+	.clasificados_destacados > .containerC .posicion:nth-child(odd) {
+		margin-top: 0;
+	}
+	.clasificados_destacados > video,
+	.clasificados_destacados {
+		height: 2400px;
+		object-fit: cover;
+	}
+}
+@media (max-width: 659px) {
+	.clasificados_destacados {
+		padding: 0 !important;
+	}
+}
 
 .fecha {
 	background: transparent !important;
@@ -568,26 +494,8 @@ html {
 	width: 40px !important;
 	height: 40px !important;
 }
-.clasificados_destacados > .borde_tabla > div:last-child > div > div > div {
-	max-height: 578px;
-	height: 100%;
-}
-.clasificados_destacados > .borde_tabla > div:last-child {
-	height: 50%;
-}
-.clasificados_destacados > .borde_tabla > div:last-child > *,
-.tabla_destacados_home {
-	height: 100%;
-}
-.clasificados_destacados > .borde_tabla > div:last-child > div > .tabla_destacados_home > div:first-child > table > thead > tr > th {
-	border-spacing: 0;
-}
-.clasificados_destacados > .borde_tabla > div:last-child > div > .tabla_destacados_home > div:first-child > table > thead > tr {
-	background-image: url("/assets/img/eventos/divisor-fila.png") !important;
-	background-position: bottom;
-	border-spacing: 0 !important;
-	background-repeat: repeat-x !important;
-	background-size: contain !important;
+.clasificados_destacados > .containerC .posicion:nth-child(odd) {
+	margin-top: 190px;
 }
 @media (max-width: 1263px) {
 	.destacado > .top > img.top_destacado {
@@ -597,11 +505,6 @@ html {
 	}
 	.destacado > .top > .username {
 		bottom: -72px !important;
-	}
-}
-@media (max-width: 1254px) {
-	.clasificados_destacados > .borde_tabla {
-		height: 1300px !important;
 	}
 }
 @media (max-width: 1240px) {
@@ -621,12 +524,6 @@ html {
 		bottom: -64px !important;
 	}
 }
-@media (max-width: 1200px) {
-	.clasificados_destacados > .borde_tabla {
-		width: 1000px !important;
-		height: 1650px !important;
-	}
-}
 @media (max-width: 1185px) {
 	.destacado > .top > img.top_destacado {
 		width: 167px !important;
@@ -642,9 +539,6 @@ html {
 	.destacado > .top > .username {
 		bottom: -53px !important;
 	}
-	.descripcion_destacado {
-		top: 16px !important;
-	}
 }
 @media (max-width: 1125px) {
 	.destacado > .top > img.top_destacado {
@@ -659,35 +553,7 @@ html {
 		font-size: 22px !important;
 	}
 }
-@media (max-width: 1111px) {
-	.destacado > .top > img.fondo {
-		width: 90% !important;
-	}
-	.destacado > .top > img.top_destacado {
-		width: 170px !important;
-		height: 170px !important;
-		left: calc(50% - 86px) !important;
-		top: 99px !important;
-	}
 
-	.destacado > .top > .username {
-		bottom: -70px !important;
-	}
-}
-@media (max-width: 1093px) {
-	.destacado > .top > img.top_destacado {
-		left: calc(50% - 86px) !important;
-		top: 98px !important;
-	}
-
-	.destacado > .top > .username {
-		bottom: -66px !important;
-	}
-	.destacado > .categoria > div,
-	.destacado > .diamantes > .title {
-		width: 320px !important;
-	}
-}
 @media (max-width: 1077px) {
 	.destacado > .diamantes > .title,
 	.destacado > .categoria > div {
@@ -720,12 +586,6 @@ html {
 	}
 	.destacado > .top > .username {
 		bottom: -53px !important;
-	}
-}
-@media (max-width: 1000px) {
-	.clasificados_destacados > .borde_tabla {
-		width: 800px !important;
-		height: 1650px !important;
 	}
 }
 @media (max-width: 998px) {
@@ -783,7 +643,7 @@ html {
 }
 @media (max-width: 929px) {
 	.destacado > video {
-		object-fit: fill !important;
+		object-fit: cover !important;
 	}
 	.destacado > .top > img.top_destacado {
 		width: 149px !important;
@@ -834,9 +694,6 @@ html {
 	.destacado > .categoria {
 		right: 9%;
 	}
-	.descripcion_destacado {
-		top: 23px !important;
-	}
 }
 @media (max-width: 860px) {
 	.destacado > .top > img.top_destacado {
@@ -851,6 +708,17 @@ html {
 	}
 	.destacado > .categoria {
 		left: calc(50% + 124px) !important;
+	}
+}
+
+@media (max-width: 850px) {
+	.destacado > video {
+		height: 920px;
+		max-height: 1000px;
+	}
+	.destacado {
+		min-height: 840px;
+		max-height: 840x;
 	}
 }
 @media (max-width: 825px) {
@@ -869,9 +737,6 @@ html {
 	}
 	.destacado > .categoria {
 		left: calc(50% + 118px) !important;
-	}
-	.descripcion_destacado {
-		top: 30px !important;
 	}
 }
 @media (max-width: 809px) {
@@ -934,9 +799,6 @@ html {
 	.destacado > .categoria {
 		left: calc(50% + 115px) !important;
 	}
-	.descripcion_destacado {
-		top: 31px !important;
-	}
 }
 @media (max-width: 760px) {
 	.destacado > .top > .username {
@@ -971,9 +833,6 @@ html {
 	.destacado > .top > .username {
 		bottom: -15px !important;
 	}
-	.descripcion_destacado {
-		top: 36px !important;
-	}
 }
 @media (max-width: 732px) {
 	.destacado > .top > img.top_destacado {
@@ -995,9 +854,6 @@ html {
 	}
 	.destacado > .top > .username {
 		bottom: -9px !important;
-	}
-	.descripcion_destacado {
-		top: 38px !important;
 	}
 }
 @media (max-width: 700px) {
@@ -1027,10 +883,6 @@ html {
 	.destacado > .top > .username {
 		bottom: -3px !important;
 	}
-	.descripcion_destacado {
-		font-size: 15px !important;
-		top: 45px !important;
-	}
 }
 @media (max-width: 670px) {
 	.destacado > .top > img.top_destacado {
@@ -1054,9 +906,6 @@ html {
 	}
 	.clasificados_destacados > .borde_tabla {
 		width: 100% !important;
-	}
-	.descripcion_destacado {
-		top: 49px !important;
 	}
 }
 @media (max-width: 640px) {
@@ -1129,9 +978,6 @@ html {
 	.destacado > .diamantes {
 		left: calc(50% - 275px) !important;
 	}
-	.descripcion_destacado {
-		top: 54px !important;
-	}
 }
 @media (max-width: 595px) {
 	.destacado > .top > img.top_destacado {
@@ -1186,9 +1032,6 @@ html {
 	.destacado > .top > .username {
 		bottom: 23px !important;
 	}
-	.descripcion_destacado {
-		top: 58px !important;
-	}
 }
 @media (max-width: 540px) {
 	.destacado > .top > img.top_destacado {
@@ -1200,6 +1043,9 @@ html {
 	.destacado > .top > .username {
 		bottom: 27px !important;
 	}
+	.destacado > video {
+		min-height: 840px !important;
+	}
 }
 @media (max-width: 520px) {
 	.destacado > .top > img.top_destacado {
@@ -1210,9 +1056,6 @@ html {
 	}
 	.destacado > .top > .username {
 		bottom: 30px !important;
-	}
-	.descripcion_destacado {
-		top: 63px !important;
 	}
 }
 @media (max-width: 500px) {
@@ -1285,9 +1128,6 @@ html {
 	.destacado > .top > .username {
 		bottom: 41px !important;
 	}
-	.descripcion_destacado {
-		top: 68px !important;
-	}
 }
 @media (max-width: 454px) {
 	.destacado > .top > img.top_destacado {
@@ -1320,6 +1160,28 @@ html {
 	}
 	.destacado > .top > .username {
 		bottom: 45px !important;
+	}
+}
+@media (max-width: 432px) {
+	.destacado > .top > .foto > img.aura_foto {
+		width: 336px !important;
+		height: 250px !important;
+		top: calc(50% - 131px) !important;
+		left: calc(50% - 167px) !important;
+	}
+	.destacado > .top > .foto > img.marco_foto {
+		width: 380px !important;
+		height: 300px !important;
+	}
+	.descripcion_destacado {
+		bottom: 39px !important;
+		padding: 6px 7px 4px 9px !important;
+		width: 90px !important;
+	}
+	.destacado > .top > .foto > img.top_destacado {
+		top: calc(50% - 70px) !important;
+		width: 130px !important;
+		height: 130px !important;
 	}
 }
 @media (max-width: 425px) {
@@ -1372,9 +1234,6 @@ html {
 	.destacado > .top > .username {
 		bottom: 50px !important;
 	}
-	.descripcion_destacado {
-		top: 72px !important;
-	}
 }
 @media (max-width: 400px) {
 	.destacado > .top > img.top_destacado {
@@ -1385,6 +1244,9 @@ html {
 	}
 	.destacado > .top > .username {
 		bottom: 52px !important;
+	}
+	.destacado > .top > .info {
+		min-width: 90% !important;
 	}
 }
 @media (max-width: 388px) {
@@ -1401,10 +1263,30 @@ html {
 		width: 38px !important;
 		height: 38px !important;
 	}
+
+	.destacado > .top > .foto > img.aura_foto {
+		width: 325px !important;
+		height: 250px !important;
+		top: calc(50% - 128px) !important;
+		left: calc(50% - 162px) !important;
+	}
+	.destacado > .top > .foto > img.marco_foto {
+		width: 300px !important;
+		height: 300px !important;
+	}
 	.descripcion_destacado {
-		top: 76px !important;
+		bottom: 39px !important;
+		padding: 6px 7px 4px 9px !important;
+		width: 90px !important;
+	}
+	.destacado > .top > .foto > img.top_destacado {
+		top: calc(50% - 66px) !important;
+		left: calc(50% - 60px) !important;
+		width: 120px !important;
+		height: 120px !important;
 	}
 }
+
 @media (max-width: 378px) {
 	.destacado > .top > img.top_destacado {
 		width: 76px !important;
@@ -1425,47 +1307,43 @@ html {
 	.destacado > .categoria {
 		left: calc(50% + 52px) !important;
 	}
+	.destacado > .top > .info > .personal {
+		width: 100% !important;
+	}
 }
+
 @media (max-width: 350px) {
-	.destacado > .top > img.top_destacado {
-		width: 70px !important;
-		height: 70px !important;
-		left: calc(50% - 35px) !important;
-		top: 116px !important;
-	}
-	.destacado > .top > .username {
-		bottom: 61px !important;
-	}
-	.destacado > .diamantes {
-		left: calc(50% - 160px) !important;
-	}
-	.destacado > .categoria {
-		left: calc(50% + 45px) !important;
-	}
-	.descripcion_destacado {
-		top: 79px !important;
+	.destacado > .top > .foto > img.aura_foto {
+		left: calc(50% - 162px) !important;
 	}
 }
 @media (max-width: 325px) {
-	.destacado > .top > img.top_destacado {
-		width: 68px !important;
-		height: 68px !important;
-		left: calc(50% - 34px) !important;
-		top: 116px !important;
+	.destacado > .top > .foto > img.aura_foto {
+		width: 285px !important;
+		height: 210px !important;
+		top: calc(50% - 108px) !important;
+		left: calc(50% - 142.5px) !important;
 	}
-	.destacado > .top > .username {
-		bottom: 67px !important;
+
+	.destacado > .top > .foto > img.marco_foto {
+		width: 260px !important;
+		height: 260px !important;
 	}
-	.destacado > .diamantes {
-		left: calc(50% - 151px) !important;
+
+	.destacado > .top > .foto > img.top_destacado {
+		top: calc(50% - 57px) !important;
+		left: calc(50% - 53px) !important;
+		width: 105px !important;
+		height: 105px !important;
 	}
-	.destacado > .categoria {
-		left: calc(50% + 41px) !important;
+
+	.descripcion_destacado {
+		font-size: 12px !important;
+		width: 60px !important;
+		left: calc(50% - 30px) !important;
+		bottom: 29px !important;
 	}
-	.destacado > .diamantes > .title,
-	.destacado > .categoria > div {
-		width: 109px !important;
-	}
+
 	.link_whatsapp {
 		width: 90% !important;
 		height: 80px !important;

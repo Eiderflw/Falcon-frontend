@@ -25,14 +25,14 @@
 				<div class="logo">
 					<router-link to="/"><img src="/assets/img/logo_app.png" alt="Logo" class="w-full h-full select-none" /></router-link>
 				</div>
-				<nav>
-					<router-link to="/duckracer">Juegos</router-link>
-					<router-link to="/terminos">Términos</router-link>
-					<router-link to="/actualizaciones-reglas">Control reglas</router-link>
-					<router-link to="/evento">Eventos</router-link>
+				<nav class="font-monomaniac-one">
+					<router-link to="/duckracer" class="font-monomaniac-one">Juegos</router-link>
+					<router-link to="/terminos" class="font-monomaniac-one">Términos</router-link>
+					<router-link to="/actualizaciones-reglas" class="font-monomaniac-one">Control reglas</router-link>
+					<router-link to="/evento" class="font-monomaniac-one">Eventos</router-link>
 
 					<router-link to="/login">
-						<button class="btn_login cursor-pointer font-bold">INICIA SESIÓN</button>
+						<button class="btn_login cursor-pointer font-bold font-monomaniac-one">INICIA SESIÓN</button>
 					</router-link>
 					<Button icon="pi pi-bars" class="botonMenu" text size="large" @click="visibleSidebar = true" />
 				</nav>
@@ -167,9 +167,9 @@ header nav a {
 	border-image-slice: 1;
 	border-width: 2px;
 	padding: 4px 16px;
-	box-shadow: 6px -5px 6px 0px rgba(92,173,191,0.59);
--webkit-box-shadow: 6px -5px 6px 0px rgba(92,173,191,0.59);
--moz-box-shadow: 6px -5px 6px 0px rgba(92,173,191,0.59);
+	box-shadow: 6px -5px 6px 0px rgba(92, 173, 191, 0.59);
+	-webkit-box-shadow: 6px -5px 6px 0px rgba(92, 173, 191, 0.59);
+	-moz-box-shadow: 6px -5px 6px 0px rgba(92, 173, 191, 0.59);
 }
 .botonMenu {
 	display: none;

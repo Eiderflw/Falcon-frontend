@@ -61,17 +61,99 @@ p {
   }
 }
 
-img.diamante, img.insignia{
+img.diamante,
+img.insignia {
   height: 50px;
   width: 55px;
   object-fit: contain;
 }
 
 @font-face {
-	font-family: "Metal-mania-regular";
-	src: url("/assets/fonts/Metal-Mania-Regular/MetalMania-Regular.ttf");
+  font-family: "Metal-mania-regular";
+  src: url("/assets/fonts/Metal-Mania-Regular/MetalMania-Regular.ttf");
 }
 
 .font-metal-mania {
   font-family: "Metal-mania-regular" !important;
+}
+
+@font-face {
+  font-family: "Monda";
+  src: url("/assets/fonts/Monda/Monda-VariableFont_wght.ttf");
+}
+
+.font-monda {
+  font-family: "Monda" !important;
+}
+
+@font-face {
+  font-family: "Monomaniac-One";
+  src: url("/assets/fonts/Monomaniac-One/MonomaniacOne-Regular.ttf");
+}
+
+.font-monomaniac-one {
+  font-family: "Monomaniac-One" !important;
+}
+
+@font-face {
+  font-family: "Mouse-Memoirs";
+  src: url("/assets/fonts/Mouse-Memoirs/MouseMemoirs-Regular.ttf");
+}
+
+.font-mouse-memoirs {
+  font-family: "Mouse-Memoirs" !important;
+}
+
+@font-face {
+  font-family: "Bahiana";
+  src: url("/assets/fonts/Bahiana/Bahiana-Regular.ttf");
+}
+
+.font-bahiana {
+  font-family: "Bahiana" !important;
+}
+
+@font-face {
+  font-family: "Onest";
+  src: url("/assets/fonts/Onest/Onest-VariableFont_wght.ttf")
+}
+
+.font-onest {
+  font-family: "Onest" !important;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("/assets/fonts/Oswald/Oswald-VariableFont_wght.ttf");
+}
+
+.font-oswald {
+  font-family: "Oswald" !important;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+}
+
+.font-montserrat {
+  font-family: "Montserrat" !important;
+}
+
+@font-face {
+  font-family: "Jockey-One";
+  src: url("/assets/fonts/Jockey-One/JockeyOne-Regular.ttf");
+}
+
+.font-jockey-one {
+  font-family: "Jockey-One" !important;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf");
+}
+
+.font-inter {
+  font-family: "Inter" !important;
 }

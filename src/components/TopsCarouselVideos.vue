@@ -4,38 +4,28 @@
 			<source src="/assets/video/home/fondo_top_aliado_select.mp4" type="video/mp4" />
 			Tu navegador no soporta esta funcionalidad video
 		</video>
-		<div class="top-seleccionado">
+		<div class="top-seleccionado relative">
+			<div class="top-title px-2 py-2 font-monda">
+				<h2 class="m-0 p-0 uppercase text-center text-xl">SELECCIONADO</h2>
+			</div>
 			<div class="flex flex-column gap-1">
-				<div class="flex flex-column gap-1 w-full">
-					<div class="top-title">
-						<h2 class="m-0 uppercase text-center font-play-pretend-home">Top</h2>
-					</div>
-					<h2 class="m-0 uppercase text-center font-play-pretend-home">Seleccionado</h2>
-				</div>
-				<div class="lista-creadores w-full flex flex-column gap-3">
+				<div class="lista-creadores w-full flex flex-column gap-3 pt-3">
 					<div
 						v-for="(seleccionado, index) in topSeleccionado"
 						:key="index"
 						:class="`top-creador ${index == 0 ? 'top1' : 'top' + (index + 1)}`"
 					>
 						<div v-if="index == 0" class="item flex flex-column justify-content-center align-items-center">
-							<div class="multimedia flex align-items-center relative">
-								<Avatar image="/assets/img/home/top/top1.png" shape="circle" />
-								<Avatar
-									:image="seleccionado.foto"
-									size="xlarge"
-									class="foto-top1 relative"
-									shape="circle"
-									:style="{ border: `3px solid ${seleccionado.agencia.toLowerCase() == 'samyflw' ? '#00D600' : '#FF4698'}` }"
-								/>
-								<Avatar image="/assets/img/home/top/luz_top1.png" size="xlarge" class="luz_top1" alt="Luz top 1" />
+							<div class="marco flex align-items-center justify-content-center relative">
+								<div class="foto-top1 relative border-circle" v-if="seleccionado.foto == null || seleccionado.foto.trim().length == 0" />
+								<Avatar v-else :image="seleccionado.foto" size="xlarge" class="foto-top1 relative" shape="circle" />
 							</div>
-							<p class="m-0 font-bold">{{ seleccionado.usuario }}</p>
-							<div class="diamantes-top flex gap-1 align-items-center relative" style="top: -20px">
-								<p class="m-0 font-bold text-3xl uppercase pt-2 font-play-pretend-home">
+							<p class="m-0 font-bold nombre-usuario font-monomaniac-one uppercase">{{ seleccionado.usuario }}</p>
+							<div class="diamantes-top mt-2 flex gap-1 align-items-center flex-wrap justify-content-center relative">
+								<Avatar image="/assets/img/home/diamante.gif" size="large" />
+								<p class="m-0 font-bold text-3xl uppercase font-monomaniac-one">
 									{{ seleccionado.diamantes_mes_actual.toLocaleString() }}
 								</p>
-								<Avatar image="/assets/img/home/top/diamante_top1.gif" size="xlarge" />
 							</div>
 						</div>
 						<div v-else class="item flex justify-content-between align-items-center">
@@ -53,12 +43,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="carousel flex flex-column align-items-center gap-1 mt-6 p-3">
-			<div class="filtros w-full flex flex-wrap gap-1 mb-3 justify-content-center align-items-center">
-				<button class="btn_filtro text-xl font-play-pretend-home" v-for="(f, index) in btn_filtros" :key="index">{{ f }}</button>
-			</div>
-			<div class="titulo-videos my-3 w-11">
-				<h2 class="m-0 uppercase text-center w-full h-full pb-3 pt-2 text-2xl font-play-pretend-home">Batallas TikTok</h2>
+		<div class="carousel h-max relative mt-6 p-4">
+			<div class="titulo-videos w-max px-3 py-3 m-auto relative">
+				<h2 class="m-0 uppercase text-center w-full text-2xl font-play-pretend-home">Batallas TikTok</h2>
 			</div>
 			<carousel-3d
 				:autoplay="true"
@@ -67,6 +54,8 @@
 				:border="0"
 				:display="displaySlides"
 				:count="slides.length"
+				:autoplayHoverPause="true"
+				:controlsVisible="true"
 				:perspective="1"
 				:startIndex="0"
 				:loop="true"
@@ -91,61 +80,43 @@
 					</div>
 				</slide>
 			</carousel-3d>
-			<div class="indicators-slider flex flex-wrap gap-2 mt-2">
-				<div
-					v-for="(slide, index) in slides"
-					:key="slide"
-					:class="`indicator-slide transition-all transition-duration-400 transition-ease-in fadeout animation-duration-1000 border-circle cursor-pointer ${
-						current_index_slide == index ? 'active' : null
-					}`"
-					@click="mostrarSlide(index)"
-				/>
+			<div class="filtros w-full flex flex-wrap gap-3 mt-4 justify-content-center align-items-center">
+				<button class="btn_filtro text-xl font-play-pretend-home uppercase" v-for="(f, index) in btn_filtros" :key="index">{{ f }}</button>
 			</div>
 		</div>
 
-		<div class="top-agencias">
+		<div class="top-agencias relative">
+			<div class="top-title px-3 py-2 font-monda">
+				<h2 class="m-0 p-0 uppercase text-center text-xl">ALIADO</h2>
+			</div>
 			<div class="flex flex-column gap-1">
-				<div class="flex flex-column gap-1 w-full">
-					<div class="top-title">
-						<h2 class="m-0 uppercase text-center font-play-pretend-home">Top</h2>
-					</div>
-					<h2 class="m-0 uppercase text-center font-play-pretend-home">Aliados</h2>
-				</div>
-				<div class="lista-creadores w-full flex flex-column gap-3">
+				<div class="lista-creadores w-full flex flex-column gap-3 pt-3">
 					<div
 						v-for="(aliado, index) in topAliados"
 						:key="index"
 						:class="`top-creador ${aliado.agencia.toLowerCase().replaceAll(' ', '_')} ${index == 0 ? 'top1' : 'top' + (index + 1)}`"
 					>
 						<div v-if="index == 0" class="item flex flex-column justify-content-center align-items-center">
-							<div class="multimedia flex align-items-center relative">
-								<Avatar image="/assets/img/home/top/top1.png" shape="circle" />
-								<Avatar
-									:image="aliado.foto"
-									size="xlarge"
-									class="foto-top1 relative"
-									shape="circle"
-									:style="{ border: `3px solid ${aliado.agencia.toLowerCase() == 'samyflw' ? '#00D600' : '#FF4698'}` }"
-								/>
-								<Avatar image="/assets/img/home/top/luz_top1.png" size="xlarge" class="luz_top1" alt="Luz top 1" />
+							<div class="marco flex align-items-center justify-content-center relative">
+								<div class="foto-top1 relative border-circle" v-if="aliado.foto == null || aliado.foto.trim().length == 0" />
+								<Avatar v-else :image="aliado.foto" size="xlarge" class="foto-top1 relative" shape="circle" />
 							</div>
-							<p class="m-0 font-bold">{{ aliado.usuario }}</p>
-							<div class="diamantes-top flex flex-wrap gap-1 align-items-center relative" style="top: -20px">
-								<p class="m-0 font-bold text-3xl uppercase pt-2 font-play-pretend-home">
+							<p class="m-0 font-bold nombre-usuario font-monomaniac-one uppercase">{{ aliado.usuario }}</p>
+							<div class="diamantes-top mt-2 flex gap-1 align-items-center flex-wrap justify-content-center relative">
+								<Avatar image="/assets/img/home/diamante.gif" size="large" />
+								<p class="m-0 font-bold text-3xl uppercase font-monomaniac-one">
 									{{ aliado.diamantes_mes_actual.toLocaleString() }}
 								</p>
-								<Avatar image="/assets/img/home/top/diamante_top1.gif" size="xlarge" />
 							</div>
 						</div>
 						<div v-else class="item flex justify-content-between align-items-center">
 							<div class="info-basica flex flex-wrap align-items-center gap-1">
-								<p class="font-bold m-0 text-black-alpha-90 font-play-pretend-home">{{ (index + 1).toString().padStart(2, "0") }}</p>
-								<Avatar :image="aliado.foto" size="large" class="avatar-tabla" shape="circle" />
-								<p class="font-bold m-0 text-black-alpha-90">{{ aliado.usuario }}</p>
+								<div class="avatar-tabla border-circle fondo-avatar-default" v-if="aliado.foto == null || aliado.foto.trim().length == 0" />
+								<Avatar v-else :image="aliado.foto" size="large" class="avatar-tabla" shape="circle" />
+								<p class="font-bold m-0 text-white">{{ aliado.usuario }}</p>
 							</div>
 							<div class="puntuacion flex flex-wrap gap-1 justify-content-center align-items-center">
-								<strong class="text-black-alpha-90">{{ aliado.diamantes_mes_actual.toLocaleString() }}</strong>
-								<Avatar image="/assets/img/home/diamante.gif" class="avatar-tabla" size="large" />
+								<strong class="text-white">{{ aliado.diamantes_mes_actual.toLocaleString() }}</strong>
 							</div>
 						</div>
 					</div>
@@ -166,9 +137,9 @@ export default {
 		current_index_slide: 0,
 		last_index_slide: null,
 		current_video: null,
-		displaySlides: 5,
-		widthSlide: 320,
-		heightSlide: 290,
+		displaySlides: 1,
+		widthSlide: 420,
+		heightSlide: 300,
 	}),
 	methods: {
 		mostrarSlide(index = 0) {
@@ -267,16 +238,11 @@ export default {
 	},
 	async created() {
 		await axios.get(`${this.API}/top-seleccionado`).then((r) => {
-			this.topSeleccionado = r.data != null ? r.data.seleccionado : [];
+			this.topSeleccionado = Array.isArray(r.data.seleccionado) && r.data.seleccionado.length > 0 ? r.data.seleccionado : [];
 		});
 		await axios.get(`${this.API}/usuario/agencias/top10`).then((r) => {
 			this.topAliados = r.data;
 		});
-
-		this.calcularMedidasCarousel();
-		window.onresize = () => {
-			this.calcularMedidasCarousel();
-		};
 		this.slides = [
 			{ url: "https://res.cloudinary.com/dyo2vl0fx/video/upload/v1733002154/videosdestacados/yjsjfc0ywhtymiojclt8.mp4" },
 			{ url: "https://res.cloudinary.com/dyo2vl0fx/video/upload/v1733002140/videosdestacados/rzwfwplhtygdvbd6kq9c.mp4" },
@@ -308,19 +274,29 @@ export default {
 	right: -27px;
 	top: -27px;
 }
-.top-title {
-	background-image: url("/assets/img/home/top/titulo.png");
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	padding-left: 69px;
-	padding-right: 74px;
+.top-agencias > .top-title,
+.top-seleccionado > .top-title {
+	background-color: #1e6572;
+	color: white;
+	top: 13px;
+	width: 180px;
+	position: absolute;
+	left: calc(50% - 90px);
+	line-height: 1;
+	border-radius: 10px;
+	margin: 0 auto;
+	box-shadow: 0px 3px 12px 5px rgba(30, 101, 114, 0.6);
+	-webkit-box-shadow: 0px 3px 12px 5px rgba(30, 101, 114, 0.6);
+	-moz-box-shadow: 0px 3px 12px 5px rgba(30, 101, 114, 0.6);
 }
 .titulo-videos {
-	background-image: url("/assets/img/home/top/titulo-videos.png");
+	background: url("/assets/img/btn_title_batalla.png");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	height: 70px;
 	max-width: 700px;
+	z-index: 5;
+	top: -59px;
 }
 .video-overlay {
 	position: absolute;
@@ -339,9 +315,8 @@ export default {
 	cursor: pointer;
 }
 .top-creadores {
-	/* background-image: url("/assets/img/home/top/fondo_top_carousel.png"); */
 	background-repeat: no-repeat;
-	
+	min-height: 1042px !important;
 }
 .top-creadores > .fondo {
 	z-index: 0;
@@ -349,58 +324,91 @@ export default {
 }
 .top-creadores > .top-seleccionado,
 .top-creadores > .top-agencias {
-	background-image: url("/assets/img/home/top/fondo.png");
+	background-image: url("/assets/img/home/top/marco_top.gif");
 	background-repeat: no-repeat;
-	background-position: bottom;
+	background-position: top;
 	background-size: 100% 100%;
-	padding: 37px 28px 23px 30px;
-	width: 400px;
+	padding: 45px 45px 50px 47px;
+	width: 450px;
 	min-width: 400px;
-	height: 840px;
-	max-height: 1000px;
+	height: 928px;
+	max-height: 950px;
 	z-index: 1;
 }
 .top-creadores > .top-seleccionado > div > .lista-creadores,
 .top-creadores > .top-agencias > div > .lista-creadores {
-	max-height: 660px;
-	overflow: auto;
-	padding: 0 4px 4px 4px;
-}
-.top-creadores > .top-seleccionado > div > .lista-creadores > .top-creador:not(.top1) {
-	padding-left: 4px;
-	outline: 2px solid #ffffff;
-	background-color: #04101c;
-	border-radius: 12px;
-}
-.top-creadores > .top-agencias > div > .lista-creadores > .top-creador:not(.top1) {
-	border-radius: 12px;
-	padding-left: 4px;
-	color: #000000;
-	outline: 2px solid #ffffff;
+	border: none;
+	border-image: linear-gradient(180deg, #1d2235 0%, #121318 100%);
+	background-image: url("/assets/img/home/top/fondo.png");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
+	background-position: top;
+	height: 830px;
+	max-height: 850px;
+	overflow: auto;
+	padding: 0 4px 4px 4px;
+	box-shadow: 0px 11.81px 53.15px 0px #00000059;
 }
-/*Es de SamyFlw*/
-.top-creadores > .top-agencias > div > .lista-creadores > .top-creador.samyflw:not(.top1) {
-	background-image: url("/assets/img/home/top/resaltado_samyflw.png");
+.lista-creadores > .top-creador.top1 > .item > .marco {
+	background-image: url("/assets/img/home/top/marco_top1.gif");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	height: 150px;
+	width: 150px;
 }
-/*Es de Nexus Live Pro*/
-.top-creadores > .top-agencias > div > .lista-creadores > .top-creador.nexus_live_pro:not(.top1) {
-	background-image: url("/assets/img/home/top/resaltado_nexus_live_pro.png");
+.lista-creadores > .top-creador.top1 > .item > .marco > * {
+	height: 113px;
+	width: 113px;
+	background-color: #3c0806;
+}
+.lista-creadores > .top-creador.top1 > .item > .nombre-usuario {
+	background: #ffffff66;
+	color: #000000;
+	padding: 2px 10px;
+	box-shadow: 0px 8px 4px 0px #00000040;
+	-webkit-box-shadow: 0px 8px 4px 0px #00000040;
+	-moz-box-shadow: 0px 8px 4px 0px #00000040;
+	border-radius: 8px;
+}
+.lista-creadores > .top-creador:not(.top1) {
+	padding: 4px 6px;
+	border-radius: 12px;
+	background-color: #264157;
+}
+.fondo-avatar-default {
+	background-color: #5cadbf;
 }
 .btn_filtro {
 	width: max-content;
 	padding: 5px 16px;
 	text-transform: uppercase;
-	border-radius: 20px;
+	border-radius: 8px;
 	font-weight: bold;
-	background: transparent;
 	cursor: pointer;
-	border: 2px solid #ffffff;
+	z-index: 2;
+	background-color: #b5a152;
+	border: 1px solid;
+	border-image-source: linear-gradient(180deg, #6c8c7c 0%, #314a4d 100%);
+	box-shadow: 4px -4px 9.8px 2px #1e6572b5;
+	-webkit-box-shadow: 4px -4px 9.8px 2px #1e6572b5;
+	-moz-box-shadow: 4px -4px 9.8px 2px #1e6572b5;
+	color: #470808;
+	font-family: "Monomaniac-One";
 }
 
 .btn_filtro:focus {
-	border: 2px solid #29cb02;
+	border: 2px solid #1e6572b5;
+}
+.top-creadores > .carousel {
+	background-color: #1e1c1d;
+	z-index: 2;
+	border-radius: 8px;
+}
+
+@media (min-width: 900px) {
+	.top-creadores > .carousel {
+		width: calc(100% - 300px) !important;
+	}
 }
 
 @media (min-width: 2200px) {
@@ -412,14 +420,15 @@ export default {
 	}
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1200px) {
 	.top-creadores {
 		justify-content: space-between !important;
 	}
 	.top-creadores > .carousel {
-		width: calc(100% - 800px) !important;
+		width: calc(100% - 600px) !important;
 	}
 }
+
 @media (min-width: 1500px) {
 	.top-creadores {
 		justify-content: space-evenly !important;
@@ -428,9 +437,17 @@ export default {
 		width: calc(100% - 990px) !important;
 	}
 }
-@media (max-width: 1024px) {
+@media (max-width: 1500px) {
 	.carousel {
-		width: 100% !important;
+		width: 90% !important;
+	}
+	.top-creadores {
+		justify-content: center !important;
+		height: 1700px !important;
+	}
+	.top-creadores > .fondo {
+		height: 1700px !important;
+		object-fit: fill !important;
 	}
 	.top-creadores > .top-seleccionado {
 		order: 0;
@@ -442,37 +459,69 @@ export default {
 		order: 2;
 	}
 }
-
+@media (max-width: 900px) {
+	.top-creadores,
+	.top-creadores > .fondo {
+		height: 2800px !important;
+	}
+}
+@media (max-width: 420px) {
+	.top-creadores > .top-seleccionado,
+	.top-creadores > .top-agencias {
+		padding: 46px 41px 50px 42px;
+	}
+}
 @media (max-width: 400px) {
 	.top-creadores > .top-seleccionado,
 	.top-creadores > .top-agencias {
-		width: 98% !important;
-		min-width: 320px;
-		height: 930px;
-		padding-left: 41px;
-		padding-right: 41px;
+		min-width: 250px;
 	}
 }
+
+@media (max-width: 390px) {
+	.top-creadores > .top-seleccionado,
+	.top-creadores > .top-agencias {
+		padding: 45px 39px 48px 40px;
+	}
+}
+@media (max-width: 360px) {
+	.top-creadores > .top-seleccionado,
+	.top-creadores > .top-agencias {
+		padding: 47px 35px 49px 37px;
+	}
+}
+
 @media (max-width: 355px) {
 	.top-creadores > .top-seleccionado,
 	.top-creadores > .top-agencias {
-		width: 98% !important;
 		min-width: 100%;
-		height: 930px;
-		padding-left: 31px;
-		padding-right: 31px;
-	}
-}
-@media (max-width: 345px) {
-	.top-creadores > .top-seleccionado,
-	.top-creadores > .top-agencias {
 		height: 950px;
+		padding: 47px 34px 50px 36px;
+	}
+	.top-creadores > .top-seleccionado > div > .lista-creadores,
+	.top-creadores > .top-agencias > div > .lista-creadores {
+		height: 850px;
+		max-height: 870px;
+	}
+	.carousel {
+		width: 99% !important;
+	}
+	.titulo-videos {
+		left: calc(50% - 140px);
 	}
 }
-@media (max-width: 331px) {
+
+@media (max-width: 318px) {
 	.top-creadores > .top-seleccionado,
 	.top-creadores > .top-agencias {
-		height: 990px;
+		padding: 47px 31px 50px 32px;
+		height: 1020px;
+		max-height: 1500px;
+	}
+	.top-creadores > .top-seleccionado > div > .lista-creadores,
+	.top-creadores > .top-agencias > div > .lista-creadores {
+		max-height: 1000px;
+		height: 917px;
 	}
 }
 </style>
