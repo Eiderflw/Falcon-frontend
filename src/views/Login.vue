@@ -227,7 +227,7 @@
                 <div class="w-full flex justify-content-center">
                     <Avatar image="/assets/img/logo_app.png" size="xlarge" shape="circle" />
                 </div>
-                <p class="title m-0"><span class="verde">SAMY</span>FLW</p>
+                <p class="title m-0"><span class="verde">FAL</span>CON</p>
                 <div class="form">
                     <div class="input-group">
                         <!-- <input v-model="user" class="input" type="text" name="username" id="username" placeholder="USUARIO">
@@ -263,13 +263,14 @@
                 </div>
                 <div class="social-icons">
                     <a aria-label="Log in with Whatsapp" class="icon"
-                        href="https://api.whatsapp.com/send?phone=573176205370">
+                        href="https://api.whatsapp.com/send?phone=50371976020">
                         <img src="/assets/img/login/wsp.png" alt="WhatsApp" width="42" height="34">
                     </a>
-                    <a aria-label="Log in with Instagram" class="icon" href="https://www.instagram.com/samyflw1/">
+                    <a aria-label="Log in with Instagram" class="icon"
+                        href="https://www.instagram.com/falconsagencylatam/">
                         <img src="/assets/img/login/ins.png" alt="Instagram" width="42" height="34">
                     </a>
-                    <a aria-label="Log in with GitHub" class="icon" href="https://www.tiktok.com/@samyflw">
+                    <a aria-label="Log in with GitHub" class="icon" href="https://www.tiktok.com/@falconsagencylatam">
                         <img src="/assets/img/login/tkk.png" alt="TikTok" width="42" height="34">
                     </a>
                 </div>

@@ -4,27 +4,23 @@
 			<source src="/assets/video/home/fondo_resenas.mp4" type="video/mp4" />
 		</video>
 		<h1 class="font-jockey-one text-6xl my-3 text-center uppercase word-break w-full">RESEÑAS</h1>
-		<Carousel
-			:value="resenas"
-			:circular="true"
-			:showNavigators="false"
-			:showIndicators="false"
-			:autoplayInterval="2000"
-			class="w-full resenas_usuarios carousel-items-centrados"
-			:numVisible="numItemsVisible"
-			:responsiveOptions="responsiveOptions"
-		>
+		<Carousel :value="resenas" :circular="true" :showNavigators="false" :showIndicators="false"
+			:autoplayInterval="2000" class="w-full resenas_usuarios carousel-items-centrados"
+			:numVisible="numItemsVisible" :responsiveOptions="responsiveOptions">
 			<template #item="props">
 				<div class="item_resena_usuario relative flex flex-column mt-8 mb-4">
-					<ScrollPanel :unstyled="true" class="descripcion" style="width: 100%; height: 150px; overflow: auto !important">
-						<p class="m-0 text-black-alpha-90 text-start font-bold font-inter text-lg uppercase">{{ props.data.descripcion }}</p>
+					<ScrollPanel :unstyled="true" class="descripcion"
+						style="width: 100%; height: 150px; overflow: auto !important">
+						<p class="m-0 text-black-alpha-90 text-start font-bold font-inter text-lg uppercase">{{
+							props.data.descripcion }}</p>
 					</ScrollPanel>
 					<div class="flex w-full gap-1">
 						<div class="foto_container">
 							<img :src="props.data.foto" alt="Foto Usuario" class="border-circle" />
 						</div>
 						<div class="div flex flex-column gap-1">
-							<h3 class="font-inter text-start uppercase m-0 text-black-alpha-90">{{ props.data.nombre }}</h3>
+							<h3 class="font-inter text-start uppercase m-0 text-black-alpha-90">{{ props.data.nombre }}
+							</h3>
 							<span class="font-inter font-bold text-black-alpha-90">{{ props.data.fecha }}</span>
 						</div>
 					</div>
@@ -32,13 +28,15 @@
 			</template>
 		</Carousel>
 		<div class="flex flex-wrap gap-2 justify-content-center align-items-center">
-			<a aria-label="Ir a WhatsApp" class="icon" target="_blank" href="https://api.whatsapp.com/send?phone=573176205370">
+			<a aria-label="Ir a WhatsApp" class="icon" target="_blank"
+				href="https://api.whatsapp.com/send?phone=50371976020">
 				<img src="/assets/img/login/wsp.png" alt="WhatsApp" width="42" height="34" />
 			</a>
-			<a aria-label="Ir a Instagram" class="icon" target="_blank" href="https://www.instagram.com/samyflw1/">
+			<a aria-label="Ir a Instagram" class="icon" target="_blank"
+				href="https://www.instagram.com/falconsagencylatam/">
 				<img src="/assets/img/login/ins.png" alt="Instagram" width="42" height="34" />
 			</a>
-			<a aria-label="Ir a TikTok" class="icon" target="_blank" href="https://www.tiktok.com/@samyflw">
+			<a aria-label="Ir a TikTok" class="icon" target="_blank" href="https://www.tiktok.com/@falconsagencylatam">
 				<img src="/assets/img/login/tkk.png" alt="TikTok" width="42" height="34" />
 			</a>
 		</div>
@@ -95,24 +93,28 @@ export default {
 };
 </script>
 <style scoped>
-.resenas > video,
+.resenas>video,
 .resenas {
 	object-fit: fill;
 	height: 600px;
 }
+
 img.estrella {
 	width: 34px;
 	height: 34px;
 }
+
 .foto_container {
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
 }
-.foto_container > img {
+
+.foto_container>img {
 	width: 100%;
 	height: 100%;
 }
+
 .item_resena_usuario {
 	max-width: 360px;
 	min-width: 350px;
@@ -123,7 +125,8 @@ img.estrella {
 	box-shadow: 7px 7px 9.3px 0px #00000040;
 	backdrop-filter: blur(4px);
 }
-.item_resena_usuario > h3 {
+
+.item_resena_usuario>h3 {
 	margin-top: 70px !important;
 }
 
@@ -133,28 +136,33 @@ img.estrella {
 		min-width: 300px !important;
 	}
 }
+
 @media (max-width: 400px) {
 	.item_resena_usuario {
 		min-width: 220px !important;
 		max-width: 220px !important;
 	}
 }
+
 @media (max-width: 335px) {
 	.item_resena_usuario {
 		max-width: 210px !important;
 		min-width: 210px !important;
 	}
 }
+
 @media (max-width: 310px) {
 	img.estrella {
 		width: 24px !important;
 		height: 24px !important;
 	}
+
 	.item_resena_usuario {
 		max-width: 190px !important;
 		min-width: 190px !important;
 	}
 }
+
 @media (max-width: 235px) {
 	img.estrella {
 		width: 20px !important;
@@ -170,14 +178,16 @@ img.estrella {
 }
 </style>
 <style>
-.resenas > .resenas_usuarios > .p-carousel-content > ul.p-carousel-indicators > li.p-carousel-indicator > button {
+.resenas>.resenas_usuarios>.p-carousel-content>ul.p-carousel-indicators>li.p-carousel-indicator>button {
 	width: 18px;
 	height: 18px;
 	border-radius: 50%;
 }
-.resenas > .resenas_usuarios > .p-carousel-content > ul.p-carousel-indicators > li.p-carousel-indicator.p-highlight > button {
+
+.resenas>.resenas_usuarios>.p-carousel-content>ul.p-carousel-indicators>li.p-carousel-indicator.p-highlight>button {
 	background-color: #25e007;
 }
+
 .resenas_usuarios .p-carousel-items-container {
 	gap: 10px !important;
 }
