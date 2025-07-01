@@ -31,7 +31,8 @@
 						<div v-else class="item flex justify-content-between align-items-center">
 							<div class="info-basica flex flex-wrap align-items-center gap-1">
 								<p class="font-bold m-0 font-play-pretend-home">{{ (index + 1).toString().padStart(2, "0") }}</p>
-								<Avatar :image="seleccionado.foto" size="large" class="avatar-tabla" shape="circle" />
+								<div class="avatar-tabla border-circle fondo-avatar-default" v-if="seleccionado.foto == null || seleccionado.foto.trim().length == 0" />
+								<Avatar :image="seleccionado.foto" size="large" class="avatar-tabla" v-else shape="circle" />
 								<p class="font-bold m-0">{{ seleccionado.usuario }}</p>
 							</div>
 							<div class="puntuacion flex flex-wrap gap-1 justify-content-center align-items-center">

@@ -120,7 +120,7 @@ export default {
 
 .posicion > .datos-personales {
 	padding: 4px 9px;
-	width: 150px;
+	width: 170px;
 	border-radius: 10px;
 	text-shadow: 3px -1px 0px rgba(254, 44, 85, 1);
 }
@@ -149,10 +149,10 @@ export default {
 }
 
 .posicion > .imgProfile {
-	width: 145px;
-	height: 145px;
-	top: 62px;
-	left: calc(50% - 73px);
+	width: 150px;
+	height: 160px;
+	top: 69px;
+	left: calc(50% - 76px);
 	user-select: none;
 }
 .posicion > .imgProfile.pos-Oro {

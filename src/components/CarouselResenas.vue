@@ -27,19 +27,6 @@
 				</div>
 			</template>
 		</Carousel>
-		<div class="flex flex-wrap gap-2 justify-content-center align-items-center">
-			<a aria-label="Ir a WhatsApp" class="icon" target="_blank"
-				href="https://api.whatsapp.com/send?phone=50371976020">
-				<img src="/assets/img/login/wsp.png" alt="WhatsApp" width="42" height="34" />
-			</a>
-			<a aria-label="Ir a Instagram" class="icon" target="_blank"
-				href="https://www.instagram.com/falconsagencylatam/">
-				<img src="/assets/img/login/ins.png" alt="Instagram" width="42" height="34" />
-			</a>
-			<a aria-label="Ir a TikTok" class="icon" target="_blank" href="https://www.tiktok.com/@falconsagencylatam">
-				<img src="/assets/img/login/tkk.png" alt="TikTok" width="42" height="34" />
-			</a>
-		</div>
 	</section>
 </template>
 <script>

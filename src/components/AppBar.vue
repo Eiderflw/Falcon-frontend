@@ -55,12 +55,12 @@
 			<template #start>
 				<div class="flex gap-2 align-items-center">
 					<Button icon="pi pi-bars" text size="large" @click="visibleSidebar = true" />
-					<a href="/" style="text-decoration: none">
+					<router-link to="/" style="text-decoration: none">
 						<span class="text-2xl font-bold logo">
 							<span>Fal</span>
 							cón
 						</span>
-					</a>
+					</router-link>
 				</div>
 			</template>
 

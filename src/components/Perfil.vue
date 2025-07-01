@@ -20,16 +20,14 @@
 						:alt="`Grupo ${store.getUsuario().grupo}`"
 					/>
 				</div>
-				<div v-if="isTop" class="topPerfil mb-6">
-					<!-- <Avatar :image="`/assets/img/cinta_${cinta}.png`" class="w-full cinta" />
-                    <p class="text-center w-full m-0 info-grupo"><strong>Grupo {{ store.getUsuario().grupo }}</strong></p>
-                     -->
+				<div v-if="isTop" class="topPerfil">
 					<Clasificacion
-						class="clasificacion"
 						:nombre="store.getUsuario().usuario"
 						:top="infoTop.top"
 						:tipo="infoTop.tipo"
 						:foto="store.getUsuario().foto"
+						:grupo="store.getUsuario().grupo"
+						:insignias="store.getUsuario().insignias"
 					/>
 				</div>
 				<div v-else-if="store.getFoto().length > 0" style="width: max-content">
@@ -49,23 +47,6 @@
 					<div class="marco-nombre-usuario font-gamers ml-4 flex justify-content-center align-items-center word-break">
 						<p class="text-center m-0 font-bold word-break">{{ store.getUsuario().usuario }}</p>
 					</div>
-				</div>
-				<img src="/assets/img/perfil/divisor.png" alt="Divisor" height="5px" width="100%" />
-				<h3 class="m-0 font-gamers" style="width: max-content !important">Insignias Obtenidas</h3>
-				<div
-					:class="`misInsignias flex w-full gap-1 ${
-						store.getUsuario().insignias.length > 4 ? 'flex-wrap justify-content-start' : 'justify-content-center'
-					}`"
-				>
-					<Avatar
-						v-for="(insignia, index) in store.getUsuario().insignias"
-						:key="index"
-						size="large"
-						shape="circle"
-						v-tooltip.top="insignia.descripcion"
-					>
-						<img :src="insignia.secure_url" :alt="`Insignia ${index + 1}`" />
-					</Avatar>
 				</div>
 			</div>
 			<div class="w-full">
@@ -365,7 +346,6 @@ export default {
 	background: transparent !important;
 	border: none !important;
 }
-
 @media (min-width: 1280px) {
 	.container-perfil {
 		flex-wrap: nowrap !important;
@@ -447,28 +427,5 @@ export default {
 
 .bajo {
 	color: red !important;
-}
-</style>
-
-<style>
-@media screen and (min-width: 576px) and (max-width: 768px) {
-	.clasificacion,
-	.top {
-		height: 270px !important;
-	}
-}
-
-@media screen and (min-width: 768px) {
-	.clasificacion,
-	.top {
-		height: 270px !important;
-	}
-}
-
-@media screen and (max-width: 575px) {
-	.clasificacion,
-	.top {
-		height: 270px !important;
-	}
 }
 </style>
