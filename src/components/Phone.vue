@@ -17,8 +17,11 @@
 			<div class="informacion flex flex-column md:w-4 p-2">
 				<h3 class="font-montserrat uppercase text-6xl mb-0">¿QUIÉNES SOMOS?</h3>
 				<p class="font-montserrat text-lg">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, ducimus itaque reprehenderit hic quisquam fugiat quas
-					aperiam assumenda qui eum. Neque molestias reprehenderit ipsum consectetur corrupti sed distinctio esse illum.
+					En Falcons Agency creemos en el poder del talento y el crecimiento auténtico. Nos dedicamos a formar, impulsar y proteger a nuevos
+					emisores en TikTok, brindándoles las herramientas, el conocimiento y el respaldo necesario para que alcancen su máximo potencial.
+					Aquí, cada paso que das hacia tu éxito es reconocido y premiado. Nuestra misión es que te sientas acompañado en cada etapa de tu
+					evolución digital, mientras construyes una comunidad fuerte, segura y llena de oportunidades. <br/>No solo somos una agencia, somos una
+					familia.
 				</p>
 				<div class="wrapper w-max">
 					<button class="btn-saber-mas text-white font-montserrat text-3xl font-bold relative cursor-pointer">SABER MÁS</button>

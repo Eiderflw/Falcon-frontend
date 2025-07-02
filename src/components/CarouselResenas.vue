@@ -1,6 +1,6 @@
 <template>
 	<section class="resenas flex flex-column relative pb-5">
-		<video src="/assets/video/home/fondo_resenas.mp4" class="absolute w-full" muted autoplay loop>
+		<video src="/assets/video/home/fondo_resenas.mp4" class="absolute w-full" autoplay loop>
 			<source src="/assets/video/home/fondo_resenas.mp4" type="video/mp4" />
 		</video>
 		<h1 class="font-jockey-one text-6xl my-3 text-center uppercase word-break w-full">RESEÑAS</h1>

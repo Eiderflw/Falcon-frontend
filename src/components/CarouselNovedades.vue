@@ -1,6 +1,6 @@
 <template>
 	<section id="novedades" class="novedades relative">
-		<video src="/assets/video/home/fondo_novedades.mp4" class="fondo w-full absolute" autoplay muted loop>
+		<video src="/assets/video/home/fondo_novedades.mp4" class="fondo w-full absolute" autoplay loop>
 			<source src="/assets/video/home/fondo_novedades.mp4" type="video/mp4" />
 		</video>
 		<div class="containerC pb-5 flex-column align-items-center relative">

@@ -1,6 +1,6 @@
 <template>
 	<section class="top-creadores flex flex-wrap row-gap-2 justify-content-center lg:justify-content-between relative">
-		<video class="fondo w-full absolute" src="/assets/video/home/fondo_top_aliado_select.mp4" autoplay loop muted>
+		<video class="fondo w-full absolute" src="/assets/video/home/fondo_top_aliado_select.mp4" autoplay loop>
 			<source src="/assets/video/home/fondo_top_aliado_select.mp4" type="video/mp4" />
 			Tu navegador no soporta esta funcionalidad video
 		</video>

@@ -4,7 +4,7 @@
 		<div class="inicio">
 			<div class="fondo">
 				<div class="destacado" id="destacado">
-					<video src="/assets/video/home/fondo_top_categorias.mp4" autoplay loop muted>
+					<video src="/assets/video/home/fondo_top_categorias.mp4" autoplay loop>
 						<source src="/assets/video/home/fondo_top_categorias.mp4" type="video/mp4" />
 						Tu navegador no soporta esta funcionalidad video
 					</video>
@@ -61,7 +61,7 @@
 				<CarouselNovedades />
 				<Phone />
 				<section id="clasificados" class="clasificados_destacados w-full relative">
-					<video src="/assets/video/home/fondo_top3.mp4" class="absolute w-full" autoplay muted loop>
+					<video src="/assets/video/home/fondo_top3.mp4" class="absolute w-full" autoplay loop>
 						<source src="/assets/video/home/fondo_top3.mp4" type="video/mp4" />
 					</video>
 					<div class="containerC py-5 align-items-start" v-if="clasificados.length > 2">
