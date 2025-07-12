@@ -1,7 +1,7 @@
 <template>
 	<div class="actualizaciones-reglas">
 		<NavBar />
-		<video loop autoplay muted class="fondo">
+		<video autoplay loop  muted class="fondo">
 			<source src="/assets/video/control-reglas/front-reglas-bg.mp4" type="video/mp4" />
 		</video>
 		<div class="contenido">
