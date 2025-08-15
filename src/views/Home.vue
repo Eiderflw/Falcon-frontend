@@ -319,7 +319,8 @@ html {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	top: 137px;
+	top: 12%;
+	height: min-content !important;
 }
 
 .destacado > .top > .foto > img.marco_foto {
@@ -778,10 +779,8 @@ html {
 		height: 920px;
 		max-height: 1000px;
 	}
-
-	.destacado {
-		min-height: 840px;
-		max-height: 840x;
+	.destacado > .top{
+		top: 4% !important;
 	}
 }
 
