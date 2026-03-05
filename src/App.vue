@@ -1,6 +1,48 @@
 <template>
 	<router-view></router-view>
 </template>
+<script>
+import axios from "axios";
+import { usePresenceStore } from "./store/index";
+
+export default {
+	data: () => ({ _heartbeatInterval: null }),
+	watch: { $route() { this._conectarPresencia(); } },
+	mounted() {
+		this._conectarPresencia();
+		window.addEventListener("storage", this._conectarPresencia);
+	},
+	beforeUnmount() {
+		usePresenceStore().disconnect();
+		window.removeEventListener("storage", this._conectarPresencia);
+		if (this._heartbeatInterval) clearInterval(this._heartbeatInterval);
+	},
+	methods: {
+		_conectarPresencia() {
+			try {
+				const raw = localStorage.getItem("user");
+				if (!raw || raw === "null") { usePresenceStore().disconnect(); return; }
+				const user = JSON.parse(raw);
+				if (!user?.usuario) return;
+				usePresenceStore().connect();
+				this._iniciarHeartbeat(user);
+			} catch (_) {}
+		},
+		_iniciarHeartbeat(user) {
+			if (this._heartbeatInterval) clearInterval(this._heartbeatInterval);
+			const ping = () => {
+				if (document.visibilityState !== "visible") return;
+				axios.post(`https://api.nexuslive.pro/usuario/heartbeat/${user.usuario}`, {}, {
+					headers: { Authorization: `Bearer ${user.access_token}` }
+				}).catch(() => {});
+			};
+			ping();
+			this._heartbeatInterval = setInterval(ping, 30000);
+			document.addEventListener("visibilitychange", ping);
+		}
+	}
+};
+</script>
 <style>
 @font-face {
 	font-family: "planet-gamers";

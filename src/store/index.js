@@ -648,3 +648,21 @@ export const useSocketStore = defineStore("socket", {
 		},
 	},
 });
+
+// ──────── Presencia en tiempo real ────────
+export const usePresenceStore = defineStore("presence", {
+  state: () => ({ eventSource: null, activos: [], isConnected: false }),
+  actions: {
+    connect() {
+      if (this.eventSource && this.eventSource.readyState !== 2) return;
+      const API_BASE = "https://api.nexuslive.pro";
+      this.eventSource = new EventSource(`${API_BASE}/usuario/presencia-stream`);
+      this.eventSource.onmessage = (event) => {
+        try { this.activos = JSON.parse(event.data) || []; } catch (_) {}
+      };
+    },
+    disconnect() {
+      if (this.eventSource) { this.eventSource.close(); this.eventSource = null; this.activos = []; }
+    }
+  }
+});
