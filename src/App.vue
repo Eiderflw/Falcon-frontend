@@ -32,7 +32,7 @@ export default {
 			if (this._heartbeatInterval) clearInterval(this._heartbeatInterval);
 			const ping = () => {
 				if (document.visibilityState !== "visible") return;
-				axios.post(`https://api.nexuslive.pro/usuario/heartbeat/${user.usuario}`, {}, {
+				axios.post(`${import.meta.env.VITE_APP_API || ""}/usuario/heartbeat/${user.usuario}`, {}, {
 					headers: { Authorization: `Bearer ${user.access_token}` }
 				}).catch(() => {});
 			};

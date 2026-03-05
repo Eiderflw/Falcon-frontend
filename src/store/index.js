@@ -655,7 +655,7 @@ export const usePresenceStore = defineStore("presence", {
   actions: {
     connect() {
       if (this.eventSource && this.eventSource.readyState !== 2) return;
-      const API_BASE = "https://api.nexuslive.pro";
+      const API_BASE = import.meta.env.VITE_APP_API || "";
       this.eventSource = new EventSource(`${API_BASE}/usuario/presencia-stream`);
       this.eventSource.onmessage = (event) => {
         try { this.activos = JSON.parse(event.data) || []; } catch (_) {}
